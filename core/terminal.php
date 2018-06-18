@@ -1,7 +1,7 @@
 <?php
 
 $inSite = false;
-require_once ('../application/boot.php');
+require_once('../application/boot.php');
 
 if(!isset($_GET['step'])) {
     error(string_received_data_error);
