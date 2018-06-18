@@ -22,7 +22,7 @@ require_once ("boot.php");
             <img src="images/tuna.png">
         </div>
 
-        <a href="#home" class="active">Home</a>
+        <a href="index.php" class="active">Home</a>
         <a href="products.php">Products</a>
         <a href="news.php">News</a>
         <a href="contact.php">Contact</a>

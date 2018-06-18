@@ -34,19 +34,19 @@ require_once ("boot.php");
 
     <div class="banner">
         <div class="inline-block">
-            <img src="../Images/img1.png">
+            <img src="images/img1.png">
             <p>Open Food Facts is a database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.</p>
         </div>
 
 
         <div class="inline-block">
-            <img src="../Images/img1.png">
+            <img src="images/img1.png">
             <p>Data about food is of public interest and has to be open. The complete database is published as open data and can be reused by anyone and for any use. Check-out the cool reuses or make your own!
             </p>
         </div>
 
         <div class="inline-block">
-            <img src="../Images/img2.jpg">
+            <img src="images/img2.jpg">
             <p>Open Food Facts is a non-profit association of volunteers.
             </p>
         </div>

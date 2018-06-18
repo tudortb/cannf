@@ -10,6 +10,7 @@ require_once ("boot.php");
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link href="css/main.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -35,25 +36,30 @@ require_once ("boot.php");
 
     <div class="char">
         <h1>Product characteristics</h1>
-        <img src="../Images/tea.jpg" alt="Fuze tea" width="100">
-        <p><span>Common name:</span> Thé Noir Glacé au Citron et Citronnelle</p>
-        <p><span>Quantity:</span> 500 ml</p>
-        <p><span>Packaging:</span> Bouteille, Plastique, PET</p>
-        <p><span>Brands:</span> Fusetea</p>
-        <p><span>Categories:</span> Beverages, Artificially sweetened beverages, Iced teas, Lemon flavored iced teas, Sugared beverages, Thés noirs glacés</p>
-        <p><span>Labels, certifications, awards:</span> Made in Italy, With sweeteners</p>
-        <p><span>Manufacturing or processing places:</span> Italie</p>
-        <p><span>Countries where sold:</span> France, Switzerland</p>
-        <p><span>Ingredients list:</span> Eau, sucre, fructose, acidifiant : acide citrique , extrait de thé (0,12 %), jus de citron a partir de concentré (0,1 %), correcteur d'acidité : citrate de sodium, arômes naturels, anti-oxydant : acide ascorbique, extrait de citronnelle (0.01 %), édulcorant : glycosides de stéviol.</p>
-        <p><span>Additives:</span> E330(Citric acid),E331(Sodium citrates)</p>
+        <p><span>Name: </span><span id="name"></span></p>
+        <p><span>Quantity: </span><span id="quantity"></span></p>
+        <p><span>Ingredients: </span><span id="ingredients"></span></p>
+        <p><span>Allergens: </span> <span id="allergens"></span></p>
+        <p><span>Packaging: </span> <span id="packaging"></span></p>
+        <p><span>Preparation Tool: </span> <span id="preparation_tool"></span></p>
+        <p><span>Preparation Instructions: </span> <span id="preparation_instructions"></span></p>
+        <p><span>Storage Information: </span> <span id="storage_info"></span></p>
+        <p><span>Validity: </span> <span id="validity"></span></p>
+        <p><span>Where sold: </span> <span id="where_sold"></span></p>
+        <p><span>Category: </span> <span id="category"></span></p>
+        <p><span>Brand: </span> <span id="brand"></span></p>
     </div>
 
     <p><a href="#" class="export">Export Data</a></p>
 
+    <script>
+        var userId = <?php printUserId(); ?>;
+        var productId = <?php echo $_GET['productId']; ?>;
+    </script>
 
+    <script src="../support/vendor/jquery/jquery-3.2.1.min.js"></script>
 
-
-
+    <script src="javascript/characteristics.js"></script>
 
 </body>
 

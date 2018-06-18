@@ -1,7 +1,7 @@
 <?php
 
 $inSite = false;
-require_once('../application/boot.php');
+require_once('../public/boot.php');
 
 if(!isset($_GET['step'])) {
     error(string_received_data_error);
@@ -14,11 +14,81 @@ if(!isset($_GET['userId'])) {
 $step = $_GET['step'];
 $userId = $_GET['userId'];
 
+$public = isPublic($step);
+
 $conn = $app -> getDatabaseAccess();
+
+if(!isValid($conn, $userId) && !$public) {
+    error(string_received_data_error);
+}
 
 switch ($step) {
     case k_step_products:
+        getStepProducts($conn);
+        break;
+    case k_step_product:
+        if(isset($_GET['productId'])) {
+            getStepProduct($conn, $_GET['productId']);
+        } else {
+            error('DUBIOUS');
+        }
         break;
     case k_step_brands:
         break;
+}
+
+function isValid($conn, $userId) {
+
+    /**
+     * This measure is still very basic.
+     * TODO : increase security here
+     */
+
+    $sql = "SELECT * FROM user WHERE id = '" . $userId . "' LIMIT 1";
+    $result = $conn -> query($sql);
+    $user = convertSQLResult($result);
+    if(count($user) > 0) {
+        return true;
+    } else {
+        return false;
+    }
+
+}
+
+function isPublic($step) {
+    switch ($step) {
+        case k_step_products:
+            return true;
+        case k_step_product:
+            return true;
+    }
+}
+
+function getStepProducts($conn) {
+
+    $sql = "SELECT * FROM product WHERE 1 = 1";
+    $result = $conn -> query($sql);
+    $products = convertSQLResult($result);
+    printPositiveJson(array('products' => $products));
+
+}
+
+function getStepProduct($conn, $productId) {
+
+    $sql = "SELECT * FROM product WHERE id = " . $productId . " ";
+    $result = $conn -> query($sql);
+    $product = convertSQLResult($result)[0];
+
+    $sql = "SELECT * FROM category WHERE id = " . $product['category_id'] . " ";
+    $result = $conn -> query($sql);
+    $category = convertSQLResult($result)[0];
+    $product['category'] = $category['name'];
+
+    $sql = "SELECT * FROM brand WHERE id = " . $product['brand_id'] . " ";
+    $result = $conn -> query($sql);
+    $brand = convertSQLResult($result)[0];
+    $product['brand'] = $brand['name'];
+
+    printPositiveJson(array('product' => $product));
+
 }

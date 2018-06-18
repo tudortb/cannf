@@ -21,10 +21,10 @@ require_once ("boot.php");
             <img src="images/tuna.png">
         </div>
 
-        <a href="home.php">Home</a>
+        <a href="index.php">Home</a>
         <a href="products.php">Products</a>
         <a href="news.php">News</a>
-        <a href="#contact" class="active">Contact</a>
+        <a href="contact.php" class="active">Contact</a>
         <a href="about.php">About</a>
 
         <?php printLogInOutButton(); ?>
