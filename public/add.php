@@ -27,38 +27,69 @@ require_once ("boot.php");
         <a href="contact.php">Contact</a>
         <a href="about.php">About</a>
 
-        <?php printLogInOutButton(); ?>
+        <?php printMenuButtons(); ?>
 
         <input type="text" placeholder="Search product..">
 
     </div>
 
-    <form action="/action_page.php">
-        Name:
-        <input type="text" name="name">
-        <br> Quantity
-        <input type="text" name="quantity">
+    <div style = "margin-left:60px; margin-top:60px;">
+        <form action="insert.php" method="post">
+            Name:
+            <input type="text" name="name">
+            <br> Quantity
+            <input type="text" name="quantity">
+            <br> Ingredients
+            <input type="text" name="ingredients">
+            <br> Allergens
+            <input type="text" name="allergens">
+            <br> Packaging
+            <input type="text" name="packaging">
+            <br> Preparation Tool
+            <input type="text" name="preparation_tool">
+            <br> Preparation Instructions
+            <input type="text" name="preparation_instructions">
+            <br> Storage Information
+            <input type="text" name="storage_info">
+            <br> Validity (months)
+            <input type="number" name="validity">
+            <br> Where is it sold
+            <input type="text" name="where_sold">
+            <br> Category
+            <select>
+                <?php
+                $conn = $app -> getDatabaseAccess();
 
+                $sql = "SELECT * FROM category WHERE 1 = 1";
+                $result = $conn -> query($sql);
+                $categories = convertSQLResult($result);
 
-        <form>
-            Packaging:
-            <input type="radio" name="packaging" value="Carton"> Carton
-            <input type="radio" name="packaging" value="Pots"> Pots
-            <input type="radio" name="packaging" value="Plastic"> Plastique
-            <input type="radio" name="packaging" value="Other" checked>Other
+                foreach($categories as $category) {
+                    print('<option value="' . $category['id'] . '">' . $category['name'] . '</option>');
+                }
+
+                ?>
+            </select>
+
+            <br> Brand
+            <select>
+                <?php
+                $conn = $app -> getDatabaseAccess();
+
+                $sql = "SELECT * FROM brand WHERE 1 = 1";
+                $result = $conn -> query($sql);
+                $brands = convertSQLResult($result);
+
+                foreach($brands as $brand) {
+                    print('<option value="' . $brand['id'] . '">' . $brand['name'] . '</option>');
+                }
+
+                ?>
+            </select>
+
+            <br><input type="submit" value="Submit">
         </form>
-
-        Brands:
-        <input type="text" name="brands">
-        <br> Categories
-        <input type="text" name="categories">
-        <br> Stores:
-        <input type="text" name="stores">
-        <br> Countries where sold
-        <input type="text" name="sold"><br>
-
-        <br><input type="submit" value="Submit">
-    </form>
+    </div>
 
 
 

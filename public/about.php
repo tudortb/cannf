@@ -27,7 +27,7 @@ require_once ("boot.php");
         <a href="contact.php">Contact</a>
         <a href="about.php" class="active">About</a>
 
-        <?php printLogInOutButton(); ?>
+        <?php printMenuButtons(); ?>
 
         <input type="text" placeholder="Search product..">
     </div>

@@ -28,7 +28,7 @@ require_once ("boot.php");
         <a href="contact.php">Contact</a>
         <a href="about.php">About</a>
 
-        <?php printLogInOutButton(); ?>
+        <?php printMenuButtons(); ?>
 
         <input type="text" placeholder="Search product..">
 
@@ -50,7 +50,7 @@ require_once ("boot.php");
         <p><span>Brand: </span> <span id="brand"></span></p>
     </div>
 
-    <p><a href="#" class="export">Export Data</a></p>
+    <?php printProductButtons(); ?>
 
     <script>
         var userId = <?php printUserId(); ?>;

@@ -22,6 +22,9 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
         session_start();
         $user = $user[0];
         $_SESSION['userId'] = $user['id'];
+        if(isset($user['isAdmin']) && $user['isAdmin'] > 0) {
+            $_SESSION['admin'] = 1;
+        }
         header('Location:index.php');
     }
 }

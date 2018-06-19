@@ -35,13 +35,13 @@ require_once ("boot.php");
                 <a href="contact.php">Contact</a>
                 <a href="about.php">About</a>
 
-                <?php printLogInOutButton(); ?>
+                <?php printMenuButtons(); ?>
 
                 <input type="text" placeholder="Search product..">
 
             </div>
 
-            <p><a href="add.php" class="import">Add a product</a></p>
+            <?php printProductsButtons(); ?>
 
         </div>
         <div class="limiter">

@@ -29,8 +29,6 @@ switch ($step) {
     case k_step_product:
         if(isset($_GET['productId'])) {
             getStepProduct($conn, $_GET['productId']);
-        } else {
-            error('DUBIOUS');
         }
         break;
     case k_step_brands:
