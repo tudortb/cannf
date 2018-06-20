@@ -30,8 +30,6 @@ require_once ("boot.php");
 
         <?php printMenuButtons(); ?>
 
-        <input type="text" placeholder="Search product..">
-
     </div>
 
     <div class="char">
@@ -50,7 +48,7 @@ require_once ("boot.php");
         <p><span>Brand: </span> <span id="brand"></span></p>
     </div>
 
-    <?php printProductButtons(); ?>
+    <?php printProductButtons(getUserId(), $_GET['productId']); ?>
 
     <script>
         var userId = <?php printUserId(); ?>;

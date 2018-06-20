@@ -30,8 +30,6 @@ require_once ("boot.php");
 
         <?php printMenuButtons(); ?>
 
-        <input type="text" placeholder="Search product..">
-
     </div>
 
     <h2>CanF gathers information and data on food products from around the world.

@@ -8,6 +8,14 @@ function printUserId() {
     }
 }
 
+function getUserId() {
+    if($_SESSION != null && isset($_SESSION['userId'])) {
+        return $_SESSION['userId'];
+    } else {
+        return -1;
+    }
+}
+
 function printMenuButtons () {
     if($_SESSION != null && isset($_SESSION['userId'])) {
         print ("<a href='logout.php'>Log Out</a>");
@@ -16,13 +24,13 @@ function printMenuButtons () {
     }
 }
 
-function printProductButtons () {
+function printProductButtons ($userId, $productId) {
     if($_SESSION != null && isset($_SESSION['userId'])) {
         print ('<p>');
         print ('<a id="export-csv-button" class="export">Export CSV</a>');
         print ('<a id="export-xml-button" class="export">Export XML</a>');
         if(isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
-            print ('<a id="modify-button" class="export">Modify</a>');
+            print ('<a id="modify-button" class="export" href="modify.php?productId=' . $productId . '&userId=' . $userId . '">Modify</a>');
             print ('<a id="delete-button" class="export">Delete</a>');
         }
         print ('</p>');

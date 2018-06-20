@@ -29,8 +29,6 @@ require_once ("boot.php");
 
         <?php printMenuButtons(); ?>
 
-        <input type="text" placeholder="Search product..">
-
     </div>
 
     <h3>By Phone (U.S.):

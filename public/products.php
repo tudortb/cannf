@@ -37,8 +37,6 @@ require_once ("boot.php");
 
                 <?php printMenuButtons(); ?>
 
-                <input type="text" placeholder="Search product..">
-
             </div>
 
             <?php printProductsButtons(); ?>

@@ -29,8 +29,6 @@ require_once ("boot.php");
 
         <?php printMenuButtons(); ?>
 
-        <input type="text" placeholder="Search product..">
-
     </div>
 
     <div id = "list" class="news" style = "margin-left: 60px; margin-top: 60px"></div>
