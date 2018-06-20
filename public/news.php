@@ -33,13 +33,16 @@ require_once ("boot.php");
 
     </div>
 
-    <div class="news">
-        <p>User #caner47 added a product 25 minutes ago . Check this out---><a href="characteristics.php">HERE</a>
-            <p>Admin #admin256 modified a product 2 days ago. Check this out---><a href="characteristics.php">HERE</a>
-    </div>
+    <div id = "list" class="news" style = "margin-left: 60px; margin-top: 60px"></div>
 
 
+    <script>
+        var userId = <?php printUserId(); ?>;
+    </script>
 
+    <script src="../support/vendor/jquery/jquery-3.2.1.min.js"></script>
+
+    <script src="javascript/news.js"></script>
 
 </body>
 

@@ -31,7 +31,8 @@ switch ($step) {
             getStepProduct($conn, $_GET['productId']);
         }
         break;
-    case k_step_brands:
+    case k_step_news:
+        getStepNews($conn);
         break;
 }
 
@@ -58,6 +59,8 @@ function isPublic($step) {
         case k_step_products:
             return true;
         case k_step_product:
+            return true;
+        case k_step_news:
             return true;
     }
 }
@@ -88,5 +91,30 @@ function getStepProduct($conn, $productId) {
     $product['brand'] = $brand['name'];
 
     printPositiveJson(array('product' => $product));
+
+}
+
+function getStepNews($conn) {
+
+    $sql = "SELECT * FROM news WHERE 1 = 1 ORDER BY id DESC";
+    $result = $conn -> query($sql);
+    $news = convertSQLResult($result);
+
+    foreach ($news as &$unit) {
+        $sql = "SELECT * FROM user WHERE id = '" . $unit['userId'] . "'";
+        $result = $conn -> query($sql);
+        $user = convertSQLResult($result)[0];
+        $unit['username'] = $user['username'];
+        $unit['isAdmin'] = $user['isAdmin'];
+
+        if($unit['type'] == k_news_type_insert) {
+            $sql = "SELECT * FROM product WHERE id = '" . $unit['productId'] . "'";
+            $result = $conn->query($sql);
+            $product = convertSQLResult($result)[0];
+            $unit['product'] = $product['name'];
+        }
+    }
+
+    printPositiveJson(array('news' => $news));
 
 }

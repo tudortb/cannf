@@ -1,6 +1,6 @@
 <?php
 
-$inSite = false;
+$inSite = true;
 require_once('../public/boot.php');
 
 if(!isset($_GET['productId'])){
@@ -22,6 +22,15 @@ if(!isAdmin($conn, $userId)) {
 
 $sql = "DELETE FROM product WHERE id = " . $productId . " LIMIT 1";
 $result = $conn -> query($sql);
+
+if(!$result) {
+    error(string_database_error);
+}
+
+$sql = "INSERT INTO news (userId, productId, type) VALUES ('" . $userId . "','" . $productId . "', 2)";
+$conn -> query($sql);
+
+printPositiveJson("Delete successful");
 
 function isAdmin($conn, $userId) {
     $sql = "SELECT * FROM user WHERE id = " . $userId . " ";

@@ -56,7 +56,7 @@ require_once ("boot.php");
             <br> Where is it sold
             <input type="text" name="where_sold">
             <br> Category
-            <select>
+            <select name="category_id">
                 <?php
                 $conn = $app -> getDatabaseAccess();
 
@@ -72,7 +72,7 @@ require_once ("boot.php");
             </select>
 
             <br> Brand
-            <select>
+            <select name="brand_id">
                 <?php
                 $conn = $app -> getDatabaseAccess();
 
